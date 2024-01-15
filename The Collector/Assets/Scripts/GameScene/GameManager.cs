@@ -4,5 +4,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-   
+    public static GameManager gameManagerInstance;
+    [HideInInspector] public bool gameState;
+    private Animator animator;
+    [SerializeField]private GameObject menuCanvas;
+
+
+    private const string IS_RUNNING = "isRunning";
+    private void Awake()
+    {
+        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        gameManagerInstance = this;
+        gameState = false;
+    }
+
+    public void TapToScreen()
+    {
+        gameState = true;
+        animator.SetBool(IS_RUNNING, true);
+        menuCanvas.SetActive(false);
+
+    }
+
 }
