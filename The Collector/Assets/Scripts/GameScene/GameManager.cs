@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManagerInstance;
-    [HideInInspector] public bool gameState;
+     public bool gameState;
     private Animator animator;
     [SerializeField]private GameObject menuCanvas;
 

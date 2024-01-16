@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,10 +13,23 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float runSpeed, velocity, swipeSpeed, roadSpeed;
     [SerializeField] private Transform road;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameObject holderPoint;
+
+    
+
+
+
+    List<GameObject> goldBarList = new List<GameObject>();
+
+    private Vector3 firstGoldPos , currentGoldPos;
+    private int goldBarListIndexCounter = 0;
+
+    private const string GOLD_TAG_STRING = "Gold";
+
 
     private void Awake()
     {
-        playerRB = transform.GetChild(0).GetComponent<Rigidbody>();
+        playerRB = this.gameObject.GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -59,6 +73,7 @@ public class PlayerScript : MonoBehaviour
 
         if (GameManager.gameManagerInstance.gameState)
         {
+            Debug.Log(GameManager.gameManagerInstance.gameState);
 
             var pathNewPos = road.position;
             road.position = new Vector3(road.position.x, road.position.y, Mathf.MoveTowards(pathNewPos.z, -100f, roadSpeed * Time.deltaTime));
@@ -81,4 +96,38 @@ public class PlayerScript : MonoBehaviour
             playerRB.velocity = Vector3.zero;
         }
     }
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(GOLD_TAG_STRING))
+        {
+            goldBarList.Add(other.gameObject);
+
+            Debug.Log(goldBarList);
+
+            if(goldBarList.Count == 1)
+            {
+
+                firstGoldPos = this.gameObject.transform.GetChild(0).GetComponent<Collider>().bounds.max;
+                currentGoldPos = new Vector3(other.transform.position.x, firstGoldPos.y, other.transform.position.z);
+                other.gameObject.transform.position = currentGoldPos;
+                currentGoldPos = new Vector3(other.transform.position.x, transform.position.y + 3f, other.transform.position.z);
+                other.gameObject.GetComponent<GoldScript>().UpdateGoldPosition(transform, true);
+            }
+            else if(goldBarList.Count > 1)
+            {
+                other.gameObject.transform.position = currentGoldPos;
+                currentGoldPos = new Vector3(other.transform.position.x, other.gameObject.transform.position.y + 0.3f, other.transform.position.z);
+                other.gameObject.GetComponent<GoldScript>().UpdateGoldPosition(goldBarList[goldBarListIndexCounter].transform, true);
+                goldBarListIndexCounter++;
+
+            }
+
+        }
+    }
+
+
+   
 }
