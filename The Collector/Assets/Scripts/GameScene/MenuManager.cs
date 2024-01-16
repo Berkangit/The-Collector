@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TextMeshProUGUI tapToStartText;
+    [SerializeField] private GameObject handIcon;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        tapToStartText.transform.
+            DOScale(1.1f, 0.5f).
+            SetLoops(10000, LoopType.Yoyo).
+            SetEase(Ease.InOutFlash);
+
+        handIcon.GetComponent<RectTransform>().
+            DOAnchorPosX(-12f, 1f) 
+            .SetLoops(100000, LoopType.Yoyo) 
+            .SetEase(Ease.InOutFlash);
     }
 }

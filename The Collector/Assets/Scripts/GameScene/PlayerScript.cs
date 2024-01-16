@@ -1,31 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-
-    private Transform player;
+    private Rigidbody playerRB;
+    private bool MoveByTouch;
+    private Vector3 Direction;
     private Vector3 startMousePos, startPLayerPos;
-    [SerializeField] private bool moveThePlayer;
-    [SerializeField] private float maxSpeed, pathSpeed, velocity;
-    public Transform path;
-  
+    [SerializeField] private float runSpeed, velocity, swipeSpeed, roadSpeed;
+    [SerializeField] private Transform road;
+    [SerializeField] private GameManager gameManager;
 
-    private void Start()
+    private void Awake()
     {
-        player = transform;
-        maxSpeed = 0.5f;
+        playerRB = transform.GetChild(0).GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-
-
         if (Input.GetMouseButtonDown(0) && GameManager.gameManagerInstance.gameState)
         {
-            moveThePlayer = true;
-
+            MoveByTouch = true;
 
             Plane newPlan = new Plane(Vector3.up, 0f);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -33,15 +30,15 @@ public class PlayerScript : MonoBehaviour
             if (newPlan.Raycast(ray, out var distance))
             {
                 startMousePos = ray.GetPoint(distance);
-                startPLayerPos = player.position;
+                startPLayerPos = playerRB.position;
             }
         }
-        else if (Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0))
         {
-            moveThePlayer = false;
-
+            MoveByTouch = false;
         }
-        if (moveThePlayer)
+
+        if(MoveByTouch)
         {
             Plane newPlan = new Plane(Vector3.up, 0f);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -53,25 +50,35 @@ public class PlayerScript : MonoBehaviour
                 Vector3 DesirePlayerPos = mouseNewPos + startPLayerPos;
 
 
-                DesirePlayerPos.x = Mathf.Clamp(DesirePlayerPos.x, -4.0f,4.0f);
+                DesirePlayerPos.x = Mathf.Clamp(DesirePlayerPos.x, -3.3f, 3.3f);
 
-                player.position = new Vector3(Mathf.SmoothDamp(player.position.x, DesirePlayerPos.x, ref velocity, maxSpeed)
-                 , player.position.y, player.position.z);
+                playerRB.position = new Vector3(Mathf.SmoothDamp(playerRB.position.x, DesirePlayerPos.x, ref velocity, runSpeed)
+                 , playerRB.position.y, playerRB.position.z);
             }
-
         }
+
         if (GameManager.gameManagerInstance.gameState)
         {
 
-            var pathNewPos = path.position;
-            path.position = new Vector3(path.position.x, path.position.y, Mathf.MoveTowards(pathNewPos.z, -450f, pathSpeed * Time.deltaTime));
+            var pathNewPos = road.position;
+            road.position = new Vector3(road.position.x, road.position.y, Mathf.MoveTowards(pathNewPos.z, -100f, roadSpeed * Time.deltaTime));
 
 
         }
-
-
-
     }
 
 
+    private void FixedUpdate()
+    {
+        if (MoveByTouch)
+        {
+            Vector3 displacement = new Vector3(Direction.x, 0f, 0f) * Time.fixedDeltaTime;
+
+            playerRB.velocity = new Vector3(Direction.x * Time.fixedDeltaTime * swipeSpeed,0f,0f) + displacement;
+        }
+        else
+        {
+            playerRB.velocity = Vector3.zero;
+        }
+    }
 }
