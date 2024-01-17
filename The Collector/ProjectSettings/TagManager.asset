@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gold
   - TestCube
+  - Gate
   layers:
   - Default
   - TransparentFX

@@ -14,11 +14,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        gameManagerInstance = this;
     }
 
     private void Start()
     {
-        gameManagerInstance = this;
+       
         gameState = false;
     }
 
