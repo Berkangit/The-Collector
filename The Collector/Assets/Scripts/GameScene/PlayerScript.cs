@@ -13,11 +13,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float runSpeed, velocity, swipeSpeed, roadSpeed;
     [SerializeField] private Transform road;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private GameObject holderPoint;
-
-    
-
-
+   
 
     List<GameObject> goldBarList = new List<GameObject>();
 
