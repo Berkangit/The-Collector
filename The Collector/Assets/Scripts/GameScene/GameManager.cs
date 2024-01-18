@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
   
     public static GameManager gameManagerInstance;
      public bool gameState;
-    private Animator animator;
+    
+
+    [SerializeField] private HealthManager healthManager;
     [SerializeField]private GameObject menuAvoids;
-    [SerializeField]private GameObject goldCountText;
+    [SerializeField] private GameObject gameStartedUI;
    
 
 
-    private const string IS_RUNNING = "isRunning";
+    
     private void Awake()
     {
-        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+       
         gameManagerInstance = this;
     }
 
@@ -30,14 +33,8 @@ public class GameManager : MonoBehaviour
     public void TapToScreen()
     {
         gameState = true;
-        animator.SetBool(IS_RUNNING, true);
         menuAvoids.SetActive(false);
-        goldCountText.SetActive(true);
-        
-
+        gameStartedUI.SetActive(true);
     }
-
-
-
     
 }

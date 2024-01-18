@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class PlayerScript : MonoBehaviour
 {
     private Rigidbody playerRB;
+
     //--------------Movement---------------
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float moveSpeed;
@@ -18,8 +19,8 @@ public class PlayerScript : MonoBehaviour
 
 
     [SerializeField] private TMP_Text goldCountText = null;
-    
- 
+
+    [SerializeField] private HealthManager healthManager;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject goldPrefab;
 
@@ -31,16 +32,22 @@ public class PlayerScript : MonoBehaviour
     private int gateNumber;
     private int targetCount;
 
+    private Animator animator;
+    private const string IS_RUNNING = "isRunning";
+    private const string IS_DEATH = "isDeath";
 
+    
     private void Awake()
     {
         playerRB = this.gameObject.GetComponent<Rigidbody>();
+        animator = this.gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
 
     private void Update()
     {
         if(GameManager.gameManagerInstance.gameState)
         {
+            
             HorizontalMove();
             ForwardMove();
             UpdateGoldCount();
@@ -97,13 +104,22 @@ public class PlayerScript : MonoBehaviour
                 else
                 {
                     Debug.Log("Eldeki kurtarmadý");
-                    for(int i= goldBarList.Count -1; i >= 0; i--)
+                    if (healthManager.numberOfHearts > 0)
                     {
-                        GameObject goldToRemove = goldBarList[i];
-                        Destroy(goldToRemove);
-                    }
-                    goldBarList.Clear();
-                    goldBarListIndexCounter = 0;
+                        for (int i = goldBarList.Count - 1; i >= 0; i--)
+                        {
+                            GameObject goldToRemove = goldBarList[i];
+                            Destroy(goldToRemove);
+                        }
+                        goldBarList.Clear();
+                        goldBarListIndexCounter = 0;
+                        healthManager.numberOfHearts--;
+
+                        if(healthManager.numberOfHearts == 0)
+                        {
+                            Death();
+                        }
+                    } 
                 }
             }
 
@@ -129,6 +145,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ForwardMove()
     {
+        animator.SetBool(IS_RUNNING, true);
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
@@ -170,6 +187,15 @@ public class PlayerScript : MonoBehaviour
     private void UpdateGoldCount()
     {
         goldCountText.text = goldBarList.Count.ToString();
+    }
+
+    private void Death()
+    {
+        Debug.Log("You are dead");
+        animator.SetBool(IS_DEATH, true);
+        moveSpeed = 0f;
+        horizontalSpeed = 0f;
+      
     }
 
 
