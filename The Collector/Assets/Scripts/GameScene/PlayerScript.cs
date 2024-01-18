@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,12 +9,15 @@ using UnityEngine.UIElements;
 public class PlayerScript : MonoBehaviour
 {
     private Rigidbody playerRB;
-
+    //--------------Movement---------------
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float horizontalLimit;
 
     private float horizontal;
+
+
+    [SerializeField] private TMP_Text goldCountText = null;
     
  
     [SerializeField] private GameManager gameManager;
@@ -39,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         {
             HorizontalMove();
             ForwardMove();
+            UpdateGoldCount();
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -79,7 +84,27 @@ public class PlayerScript : MonoBehaviour
             } 
             else if (gateNumber < 0)
             {
-                DecreaseGold();
+
+                if (goldBarList.Count >= Mathf.Abs(gateNumber))
+                {
+                    Debug.Log("Decrease gold called");
+
+                    Debug.Log("target count :" + targetCount);
+                    Debug.Log("target count :" + goldBarList.Count);
+                    DecreaseGold();
+                }
+
+                else
+                {
+                    Debug.Log("Eldeki kurtarmadý");
+                    for(int i= goldBarList.Count -1; i >= 0; i--)
+                    {
+                        GameObject goldToRemove = goldBarList[i];
+                        Destroy(goldToRemove);
+                    }
+                    goldBarList.Clear();
+                    goldBarListIndexCounter = 0;
+                }
             }
 
         }
@@ -123,23 +148,28 @@ public class PlayerScript : MonoBehaviour
 
     private void DecreaseGold()
     {
-        for(int i =goldBarList.Count -1; i>=targetCount; i--)
-        {
-            GameObject goldToRemove = goldBarList[i];
-            goldBarList.RemoveAt(i);
-            goldBarListIndexCounter--;
-            Destroy(goldToRemove);
-        }
+
+            for (int i = goldBarList.Count - 1; i >= targetCount; i--)
+            {
+                GameObject goldToRemove = goldBarList[i];
+                goldBarList.RemoveAt(i);
+                goldBarListIndexCounter--;
+                Destroy(goldToRemove);
+            }
+       
+       
 
         if (goldBarList.Count > 0)
         {
             currentGoldPos = goldBarList[goldBarList.Count - 1].transform.position;
             currentGoldPos.y += 0.3f;
         }
-        else
-        {
-            currentGoldPos = Vector3.zero;
     }
+
+
+    private void UpdateGoldCount()
+    {
+        goldCountText.text = goldBarList.Count.ToString();
     }
 
 

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
      public bool gameState;
     private Animator animator;
     [SerializeField]private GameObject menuAvoids;
+    [SerializeField]private GameObject goldCountText;
    
 
 
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         gameState = true;
         animator.SetBool(IS_RUNNING, true);
         menuAvoids.SetActive(false);
+        goldCountText.SetActive(true);
         
 
     }
