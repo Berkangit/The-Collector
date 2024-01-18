@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+  
     public static GameManager gameManagerInstance;
      public bool gameState;
     private Animator animator;
-    [SerializeField]private GameObject menuCanvas;
+    [SerializeField]private GameObject menuAvoids;
+   
 
 
     private const string IS_RUNNING = "isRunning";
@@ -19,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-       
         gameState = false;
     }
 
@@ -27,8 +30,12 @@ public class GameManager : MonoBehaviour
     {
         gameState = true;
         animator.SetBool(IS_RUNNING, true);
-        menuCanvas.SetActive(false);
+        menuAvoids.SetActive(false);
+        
 
     }
 
+
+
+    
 }
