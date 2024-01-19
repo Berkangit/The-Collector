@@ -17,6 +17,7 @@ public class MainMenuUI : MonoBehaviour
         playButton.onClick.AddListener(() =>
         {
             SceneManager.LoadScene(gameScene);
+            GameManager.gameManagerInstance.gameState = true;
         });
         optionButton.onClick.AddListener(() =>
         {
