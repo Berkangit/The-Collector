@@ -9,12 +9,16 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tapToStartText;
     [SerializeField] private GameObject handIcon;
+    [SerializeField] private TMP_Text goldCountText = null;
+    [SerializeField] private PlayerScript playerScript;
 
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform finishLineTransform;
     [SerializeField] private Slider slider;
 
     private float maxDistance;
+
+   
     private void Start()
     {
         maxDistance = getDistance();
@@ -42,6 +46,8 @@ public class MenuManager : MonoBehaviour
             float distance = 1 - (getDistance() / maxDistance);
             setProgresss(distance);
         }
+
+        UpdateGoldCount();
     }
 
     private float getDistance()
@@ -52,5 +58,10 @@ public class MenuManager : MonoBehaviour
     private void setProgresss(float p)
     {
         slider.value = p;
+    }
+
+    private void UpdateGoldCount()
+    {
+        goldCountText.text = playerScript.goldBarList.Count.ToString();
     }
 }

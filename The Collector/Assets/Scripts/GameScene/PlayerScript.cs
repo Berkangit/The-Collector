@@ -18,17 +18,19 @@ public class PlayerScript : MonoBehaviour
     private float horizontal;
 
 
-    [SerializeField] private TMP_Text goldCountText = null;
 
+    [SerializeField] private GameOverManager gameOverManager;
     [SerializeField] private HealthManager healthManager;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject goldPrefab;
+    [HideInInspector] public bool isFinishLineTouched = false;
 
-    List<GameObject> goldBarList = new List<GameObject>();
+   [HideInInspector]public List<GameObject> goldBarList = new List<GameObject>();
     private Vector3 firstGoldPos , currentGoldPos;
     private int goldBarListIndexCounter = 0;
     private const string GOLD_TAG_STRING = "Gold";
     private const string GATE_TAG_STRING = "Gate";
+    private const string FINISH_LINE_STRING = "FinishLine";
     private int gateNumber;
     private int targetCount;
 
@@ -50,7 +52,7 @@ public class PlayerScript : MonoBehaviour
             
             HorizontalMove();
             ForwardMove();
-            UpdateGoldCount();
+           
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -124,6 +126,14 @@ public class PlayerScript : MonoBehaviour
             }
 
         }
+
+        if(other.gameObject.CompareTag(FINISH_LINE_STRING))
+        {
+            Debug.Log("Game is finished");
+            GameManager.gameManagerInstance.gameState = false;
+            isFinishLineTouched = true;
+            animator.SetBool(IS_RUNNING, false);
+        }
     }
 
 
@@ -184,10 +194,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    private void UpdateGoldCount()
-    {
-        goldCountText.text = goldBarList.Count.ToString();
-    }
+  
 
     private void Death()
     {
