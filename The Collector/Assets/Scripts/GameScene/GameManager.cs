@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManagerInstance;
      public bool gameState;
     
-
-    [SerializeField] private HealthManager healthManager;
     [SerializeField]private GameObject menuAvoids;
     [SerializeField] private GameObject gameStartedUI;
    

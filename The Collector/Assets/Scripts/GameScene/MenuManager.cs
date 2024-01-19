@@ -19,15 +19,20 @@ public class MenuManager : MonoBehaviour
     {
         maxDistance = getDistance();
 
-        tapToStartText.transform.
-            DOScale(1.1f, 0.5f).
-            SetLoops(10000, LoopType.Yoyo).
-            SetEase(Ease.InOutFlash);
-
-        handIcon.GetComponent<RectTransform>().
-            DOAnchorPosX(-12f, 1f) 
-            .SetLoops(100000, LoopType.Yoyo) 
-            .SetEase(Ease.InOutFlash);
+        if(GameManager.gameManagerInstance.gameState == false)
+        {
+                tapToStartText.transform.
+                DOScale(1.1f, 0.5f).
+                SetLoops(10000, LoopType.Yoyo).
+                SetEase(Ease.InOutFlash);
+            
+                handIcon.GetComponent<RectTransform>().
+                 DOAnchorPosX(-12f, 1f)
+                .SetLoops(100000, LoopType.Yoyo)
+               .SetEase(Ease.InOutFlash);
+            
+        }       
+       
     }
 
     void Update()
