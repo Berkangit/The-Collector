@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -162,14 +163,17 @@ public class PlayerScript : MonoBehaviour
 
     private void IncreaseGold()
     {
-        for(int i=0; i< gateNumber; i++)
+        if (goldBarList.Count > 0)
         {
-            GameObject newGold = Instantiate(goldPrefab);
-            newGold.gameObject.transform.position = currentGoldPos;
-            currentGoldPos = new Vector3(newGold.transform.position.x, newGold.gameObject.transform.position.y + 0.3f, newGold.transform.position.z);
-            newGold.gameObject.GetComponent<GoldScript>().UpdateGoldPosition(goldBarList[goldBarListIndexCounter].transform, true);
-            goldBarList.Add(newGold);
-            goldBarListIndexCounter++;
+            for (int i = 0; i < gateNumber; i++)
+            {
+                GameObject newGold = Instantiate(goldPrefab);
+                newGold.gameObject.transform.position = currentGoldPos;
+                currentGoldPos = new Vector3(newGold.transform.position.x, newGold.gameObject.transform.position.y + 0.3f, newGold.transform.position.z);
+                newGold.gameObject.GetComponent<GoldScript>().UpdateGoldPosition(goldBarList[goldBarListIndexCounter].transform, true);
+                goldBarList.Add(newGold);
+                goldBarListIndexCounter++;
+            }
         }
     }
 

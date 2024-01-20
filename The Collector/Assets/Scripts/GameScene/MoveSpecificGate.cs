@@ -25,8 +25,8 @@ public class MoveSpecificGate : MonoBehaviour
 
 
         RandomMoveToLimits();
- 
     }
+
 
 
 

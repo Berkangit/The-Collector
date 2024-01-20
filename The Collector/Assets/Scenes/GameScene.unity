@@ -8669,7 +8669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limitA: {x: 3.5, y: 2.9, z: 0}
   limitB: {x: -3.5, y: 2.9, z: 0}
-  speed: 1
+  speed: 0.7
 --- !u!4 &1683521278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4369182301505555752, guid: 9eea308f8547fb243940b68c27a095ca, type: 3}
