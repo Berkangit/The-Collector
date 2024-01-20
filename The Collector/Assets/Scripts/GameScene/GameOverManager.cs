@@ -13,7 +13,7 @@ public class GameOverManager : MonoBehaviour
 
     private void Update()
     {
-        if(playerScript.isFinishLineTouched)
+        if(playerScript.isFinishLineTouched || playerScript.isPlayerDead)
         {
             GameOver();
         }

@@ -1,11 +1,6 @@
-using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
-using System.Net;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 public class PlayerScript : MonoBehaviour
 {
@@ -25,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject goldPrefab;
     [HideInInspector] public bool isFinishLineTouched = false;
+    [HideInInspector] public bool isPlayerDead = false;
 
    [HideInInspector]public List<GameObject> goldBarList = new List<GameObject>();
     private Vector3 firstGoldPos , currentGoldPos;
@@ -38,6 +34,7 @@ public class PlayerScript : MonoBehaviour
     private Animator animator;
     private const string IS_RUNNING = "isRunning";
     private const string IS_DEATH = "isDeath";
+    private const string IS_FINISHED = "isFinished";
 
     
     private void Awake()
@@ -60,6 +57,8 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag(GOLD_TAG_STRING))
         {
             goldBarList.Add(other.gameObject);
+
+            SoundManager.instance.PlayCoinSounds();
 
             Debug.Log(goldBarList.Count);
             if(goldBarList.Count == 1)
@@ -89,6 +88,7 @@ public class PlayerScript : MonoBehaviour
 
             if(gateNumber > 0)
             {
+                SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.multipleCoinSoundClip);
                 IncreaseGold();
             } 
             else if (gateNumber < 0)
@@ -100,12 +100,14 @@ public class PlayerScript : MonoBehaviour
 
                     Debug.Log("target count :" + targetCount);
                     Debug.Log("target count :" + goldBarList.Count);
+                    SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.coinDropSoundClip);
                     DecreaseGold();
                 }
 
                 else
                 {
                     Debug.Log("Eldeki kurtarmadý");
+                    SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.punchSoundClip);
                     if (healthManager.numberOfHearts > 0)
                     {
                         for (int i = goldBarList.Count - 1; i >= 0; i--)
@@ -132,7 +134,7 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("Game is finished");
             GameManager.gameManagerInstance.gameState = false;
             isFinishLineTouched = true;
-            animator.SetBool(IS_RUNNING, false);
+            animator.SetBool(IS_FINISHED,true);
         }
     }
 
@@ -178,7 +180,7 @@ public class PlayerScript : MonoBehaviour
 
     private void DecreaseGold()
     {
-
+        Debug.Log("Before gold decreased " + goldBarListIndexCounter);
             for (int i = goldBarList.Count - 1; i >= targetCount; i--)
             {
                 GameObject goldToRemove = goldBarList[i];
@@ -186,8 +188,13 @@ public class PlayerScript : MonoBehaviour
                 goldBarListIndexCounter--;
                 Destroy(goldToRemove);
             }
-       
-       
+
+        if (goldBarListIndexCounter < 0)
+            goldBarListIndexCounter = 0;
+
+        Debug.Log("After gold decreased " + goldBarListIndexCounter);
+
+
 
         if (goldBarList.Count > 0)
         {
@@ -202,9 +209,11 @@ public class PlayerScript : MonoBehaviour
     private void Death()
     {
         Debug.Log("You are dead");
+        SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.deathSoundClip);
         animator.SetBool(IS_DEATH, true);
         moveSpeed = 0f;
         horizontalSpeed = 0f;
+        isPlayerDead = true;
       
     }
 
