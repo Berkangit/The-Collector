@@ -11,16 +11,6 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private TMP_Text goldAmountText;
     [SerializeField] private PlayerScript playerScript;
 
-
-
-
-    private void Start()
-    {
-        goldAmountText.text = PlayerPrefs.GetInt("CurrentGoldAmount").ToString();
-        SetGoldAmount();
-    }
-
-
     private void Update()
     {
         if(playerScript.isFinishLineTouched)
@@ -51,11 +41,6 @@ public class GameOverManager : MonoBehaviour
     {
         Debug.Log("Quit");
         Application.Quit();
-    }
-
-    private void SetGoldAmount()
-    {
-        PlayerPrefs.SetInt("CurrentGoldAmount", playerScript.goldBarList.Count);
     }
 
 
