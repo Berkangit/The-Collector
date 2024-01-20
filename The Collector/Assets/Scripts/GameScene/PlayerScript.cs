@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
 {
-    private Rigidbody playerRB;
+  
 
     //--------------Movement---------------
     [SerializeField] private float horizontalSpeed;
@@ -42,7 +42,6 @@ public class PlayerScript : MonoBehaviour
     
     private void Awake()
     {
-        playerRB = this.gameObject.GetComponent<Rigidbody>();
         animator = this.gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
 
