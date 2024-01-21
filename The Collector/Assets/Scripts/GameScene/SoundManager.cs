@@ -13,23 +13,44 @@ public class SoundManager : MonoBehaviour
      public AudioClip deathSoundClip;
     private int randomCoinSound;
 
+    private const string PLAYER_PREFS_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
+
+    private float volume = 1f;
+
     private void Awake()
     {
         instance = this;
-       
-    }
-
-
-    private void Start()
-    {
+        volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, 1f);
         auidioSource = GetComponent<AudioSource>();
-    }
+        auidioSource.volume = volume;
 
+    }
 
     public void PlayCoinSounds()
     {
         randomCoinSound = Random.Range(0, 3);
         auidioSource.PlayOneShot(coinSoundClip[randomCoinSound]);
     }
-    
+
+    public void ChangeVolume()
+    {
+       
+        volume += .1f;
+        if (volume > 1f)
+        {
+            volume = 0f;
+        }
+
+        auidioSource.volume = volume;
+        PlayerPrefs.SetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, volume);
+        PlayerPrefs.Save();
+        Debug.Log("Volume deðiþtirildi" + volume);
+    }
+
+
+    public float GetVolume()
+    {
+        return volume;
+    }
+
 }

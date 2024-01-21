@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using TMPro;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -12,25 +13,40 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button menuButton;
     [SerializeField] private Button quitButton;
+    [SerializeField] private Button soundButton;
+    [SerializeField] private TextMeshProUGUI soundEffectsText;
     [SerializeField] private GameObject pauseMenuUI;
 
     private const string MAIN_MENU = "MainMenu";
-    private void Update()
+ 
+    private void Awake()
     {
-       
         pauseButton.onClick.AddListener(() =>
         {
-           
-                Pause();
-            
+
+            Pause();
+
+        });
+
+        soundButton.onClick.AddListener(() =>
+        {
+            SoundManager.instance.ChangeVolume();
+            soundEffectsText.text = "SOUND : " + Mathf.Round(SoundManager.instance.GetVolume() * 10f);
         });
 
         resumeButton.onClick.AddListener(() =>
         {
 
-                Resume();
-            
+            Resume();
+
         });
+
+    }
+
+
+    private void Start()
+    {
+        soundEffectsText.text = "SOUND : " + Mathf.Round(SoundManager.instance.GetVolume() * 10f);
     }
 
 
