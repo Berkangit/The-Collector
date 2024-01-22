@@ -11,14 +11,22 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject handIcon;
     [SerializeField] private TMP_Text goldCountText = null;
     [SerializeField] private PlayerScript playerScript;
+    public static MenuManager Instance { get; private set; }
+   
 
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform finishLineTransform;
     [SerializeField] private Slider slider;
+    [SerializeField] private Vector3 newGoldCountTransform = new Vector3(1.5f,1.5f,1.5f);
 
     private float maxDistance;
 
-   
+    private void Awake()
+    {
+        Instance = this;
+  
+    }
+
     private void Start()
     {
         maxDistance = getDistance();
@@ -47,7 +55,7 @@ public class MenuManager : MonoBehaviour
             setProgresss(distance);
         }
 
-        UpdateGoldCount();
+       
     }
 
     private float getDistance()
@@ -60,8 +68,19 @@ public class MenuManager : MonoBehaviour
         slider.value = p;
     }
 
-    private void UpdateGoldCount()
+    public void UpdateGoldCount()
     {
+        goldCountText.transform.DOScale(newGoldCountTransform, 0.3f)
+          .OnComplete(() => OnScaleComplete());
+           //nsform.DOMove(randomStartPosition, speed)
+           //.OnComplete(() => OnMoveComplete());
+
+
         goldCountText.text = playerScript.goldBarList.Count.ToString();
+    }
+
+    private void OnScaleComplete()
+    {
+        goldCountText.transform.DOScale(new Vector3(1f, 1f, 1f), 0.3f);
     }
 }

@@ -58,6 +58,8 @@ public class PlayerScript : MonoBehaviour
         {
             goldBarList.Add(other.gameObject);
 
+            MenuManager.Instance.UpdateGoldCount();
+
             SoundManager.instance.PlayCoinSounds();
 
             Debug.Log(goldBarList.Count);
@@ -89,6 +91,7 @@ public class PlayerScript : MonoBehaviour
             if(gateNumber > 0)
             {
                 SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.multipleCoinSoundClip);
+                MenuManager.Instance.UpdateGoldCount();
                 IncreaseGold();
             } 
             else if (gateNumber < 0)
