@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class PlayerScript : MonoBehaviour
 {
-  
+
+    public event EventHandler OnGameFinished;
 
     //--------------Movement---------------
     [SerializeField] private float horizontalSpeed;
@@ -20,7 +22,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject goldPrefab;
     [HideInInspector] public bool isFinishLineTouched = false;
-    [HideInInspector] public bool isPlayerDead = false;
 
    [HideInInspector]public List<GameObject> goldBarList = new List<GameObject>();
     private Vector3 firstGoldPos , currentGoldPos;
@@ -52,6 +53,8 @@ public class PlayerScript : MonoBehaviour
            
         }
     }
+
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(GOLD_TAG_STRING))
@@ -138,12 +141,15 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag(FINISH_LINE_STRING))
         {
             Debug.Log("Game is finished");
-            GameManager.gameManagerInstance.gameState = false;
+            Time.timeScale = 0f;
             isFinishLineTouched = true;
-            animator.SetBool(IS_FINISHED,true);
-
-            if (goldBarList.Count > PlayerPrefs.GetInt("HighGold", 0)) 
-            PlayerPrefs.SetInt("HighGold", goldBarList.Count);
+            animator.SetBool(IS_FINISHED, true);
+            GameManager.gameManagerInstance.gameState = false;
+            if (goldBarList.Count > PlayerPrefs.GetInt("HighGold")) 
+                 PlayerPrefs.SetInt("HighGold", goldBarList.Count);
+            OnGameFinished?.Invoke(this, EventArgs.Empty);
+   
+                 
         }
     }
       
@@ -218,11 +224,11 @@ public class PlayerScript : MonoBehaviour
     {
         Debug.Log("You are dead");
         SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.deathSoundClip);
+        OnGameFinished?.Invoke(this, EventArgs.Empty);
         animator.SetBool(IS_DEATH, true);
         moveSpeed = 0f;
-        horizontalSpeed = 0f;
-        isPlayerDead = true;
-      
+        horizontalSpeed = 0f;   
+        Destroy(this.gameObject.transform.GetComponent<Rigidbody>());
     }
 
 

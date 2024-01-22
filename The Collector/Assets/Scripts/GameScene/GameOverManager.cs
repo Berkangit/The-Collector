@@ -15,11 +15,23 @@ public class GameOverManager : MonoBehaviour
     private const string MENU_SCENE = "MainMenu";
 
 
+    private void Start()
+    {
+        playerScript.OnGameFinished += PlayerScript_OnGameFinished;
+    }
 
+    private void PlayerScript_OnGameFinished(object sender, System.EventArgs e)
+    {
+        if (playerScript.isFinishLineTouched)
+        {
+            Debug.Log("Listedeki gold sayýsý sayýsý" + playerScript.goldBarList.Count);
+            goldAmountText.text = PlayerPrefs.GetInt("HighGold").ToString();
+        }
+        GameOver();
+        
+    }
 
-
-
-    private void Update()
+  /*  private void Update()
     {
         if (playerScript.isFinishLineTouched || playerScript.isPlayerDead)
         {
@@ -27,10 +39,9 @@ public class GameOverManager : MonoBehaviour
         }
         if (playerScript.isFinishLineTouched)
         {
-            Debug.Log("Listedeki gold sayýsý sayýsý" + playerScript.goldBarList.Count);
-            goldAmountText.text = PlayerPrefs.GetInt("HighGold",0).ToString();
+           
         }
-    }
+    }*/
 
     public void RestartTheGame()
     {

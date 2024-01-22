@@ -3851,6 +3851,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 46dcb848f0ace5e4f8c52ba6589307a6, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 31f6676788424824f81d41d250333da1, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7501,14 +7505,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeed: 15
-  moveSpeed: 5
+  moveSpeed: 6
   horizontalLimit: 4
   gameOverManager: {fileID: 996123469}
   healthManager: {fileID: 1419598374}
   gameManager: {fileID: 525800915}
   goldPrefab: {fileID: 7904459223175820775, guid: dad240bfbf561fa46861d6bb85688f0e, type: 3}
   isFinishLineTouched: 0
-  isPlayerDead: 0
   goldBarList: []
 --- !u!54 &1419598373
 Rigidbody:
@@ -9804,7 +9807,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: -0, y: 0.9, z: 0}
+  m_Center: {x: -0, y: 1.05, z: 0}
 --- !u!4 &1854778195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508337387412402559, guid: dad240bfbf561fa46861d6bb85688f0e, type: 3}

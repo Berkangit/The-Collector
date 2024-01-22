@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public void TapToScreen()
     {
         gameState = true;
+        Time.timeScale = 1f;
         menuAvoids.SetActive(false);
         gameStartedUI.SetActive(true);
     }
