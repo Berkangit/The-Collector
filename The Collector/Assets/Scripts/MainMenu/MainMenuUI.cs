@@ -12,6 +12,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button quitButton;
    
     private const string gameScene = "GameScene";
+    private const string levelScene = "LevelsScene";
 
     private void Awake()
     {
@@ -22,10 +23,10 @@ public class MainMenuUI : MonoBehaviour
             //GameManager.gameManagerInstance.gameState = true;
         });
 
-        //sasa
         levelButton.onClick.AddListener(() => 
         {
             Debug.Log("Level Button");
+            SceneManager.LoadScene(levelScene);
 
         });
 

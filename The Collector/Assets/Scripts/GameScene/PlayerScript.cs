@@ -137,8 +137,7 @@ public class PlayerScript : MonoBehaviour
             animator.SetBool(IS_FINISHED,true);
         }
     }
-
-
+      
     private void HorizontalMove()
     {
         float newX;
