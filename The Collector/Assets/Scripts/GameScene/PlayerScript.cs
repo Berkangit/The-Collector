@@ -90,12 +90,14 @@ public class PlayerScript : MonoBehaviour
 
             if(gateNumber > 0)
             {
+                IncreaseGold();
                 SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.multipleCoinSoundClip);
                 MenuManager.Instance.UpdateGoldCount();
-                IncreaseGold();
+               
             } 
             else if (gateNumber < 0)
             {
+               
 
                 if (goldBarList.Count >= Mathf.Abs(gateNumber))
                 {
@@ -128,6 +130,7 @@ public class PlayerScript : MonoBehaviour
                         }
                     } 
                 }
+                MenuManager.Instance.UpdateGoldCount();
             }
 
         }
@@ -139,6 +142,7 @@ public class PlayerScript : MonoBehaviour
             isFinishLineTouched = true;
             animator.SetBool(IS_FINISHED,true);
 
+            if (goldBarList.Count > PlayerPrefs.GetInt("HighGold", 0)) 
             PlayerPrefs.SetInt("HighGold", goldBarList.Count);
         }
     }
