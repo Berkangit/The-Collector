@@ -138,6 +138,8 @@ public class PlayerScript : MonoBehaviour
             GameManager.gameManagerInstance.gameState = false;
             isFinishLineTouched = true;
             animator.SetBool(IS_FINISHED,true);
+
+            PlayerPrefs.SetInt("HighGold", goldBarList.Count);
         }
     }
       

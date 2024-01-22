@@ -11,21 +11,26 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private TMP_Text goldAmountText;
     [SerializeField] private PlayerScript playerScript;
 
-    private void Update()
-    {
-        if(playerScript.isFinishLineTouched || playerScript.isPlayerDead)
-        {
-            GameOver();
-        }
-    }
-
-
-
     private const string GAME_SCENE = "GameScene";
     private const string MENU_SCENE = "MainMenu";
 
 
 
+
+
+
+    private void Update()
+    {
+        if (playerScript.isFinishLineTouched || playerScript.isPlayerDead)
+        {
+            GameOver();
+        }
+        if (playerScript.isFinishLineTouched)
+        {
+            Debug.Log("Listedeki gold sayýsý sayýsý" + playerScript.goldBarList.Count);
+            goldAmountText.text = PlayerPrefs.GetInt("HighGold").ToString();
+        }
+    }
 
     public void RestartTheGame()
     {

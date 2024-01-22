@@ -19,12 +19,17 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private Vector3 newGoldCountTransform = new Vector3(1.5f,1.5f,1.5f);
 
+
+  
+
     private float maxDistance;
 
     private void Awake()
     {
         Instance = this;
-  
+
+       
+
     }
 
     private void Start()
@@ -83,4 +88,5 @@ public class MenuManager : MonoBehaviour
     {
         goldCountText.transform.DOScale(new Vector3(1f, 1f, 1f), 0.3f);
     }
+
 }
