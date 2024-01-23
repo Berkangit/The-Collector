@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 5
-  horizontal: 0
+  horizontal: 1
   speed: 3
   offset: 0
