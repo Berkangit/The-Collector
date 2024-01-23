@@ -8,8 +8,7 @@ public class PlayerScript : MonoBehaviour
 
     public event EventHandler OnGameFinished;
 
-    private Rigidbody playerRb;
-
+  
     //--------------Movement---------------
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float moveSpeed;
@@ -45,7 +44,7 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         animator = this.gameObject.transform.GetChild(0).GetComponent<Animator>();
-        playerRb = this.gameObject.GetComponent<Rigidbody>();
+        
     }
 
     private void Update()
@@ -248,7 +247,7 @@ public class PlayerScript : MonoBehaviour
         animator.SetBool(IS_DEATH, true);
         moveSpeed = 0f;
         horizontalSpeed = 0f;   
-        Destroy(this.gameObject.transform.GetComponent<Rigidbody>());
+        Destroy(this.gameObject.transform.GetComponent<Rigidbody>()); 
     }
 
 

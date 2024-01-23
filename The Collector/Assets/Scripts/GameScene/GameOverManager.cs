@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -11,9 +11,10 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private TMP_Text goldAmountText;
     [SerializeField] private PlayerScript playerScript;
 
-    private const string GAME_SCENE = "GameScene";
+    
     private const string MENU_SCENE = "MainMenu";
 
+    
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class GameOverManager : MonoBehaviour
     {
         if (playerScript.isFinishLineTouched)
         {
-            Debug.Log("Listedeki gold sayýsý sayýsý" + playerScript.goldBarList.Count);
+            Debug.Log("Listedeki gold sayÃ½sÃ½ sayÃ½sÃ½" + playerScript.goldBarList.Count);
             goldAmountText.text = PlayerPrefs.GetInt("HighGold").ToString();
         }
         GameOver();
@@ -33,7 +34,8 @@ public class GameOverManager : MonoBehaviour
 
     public void RestartTheGame()
     {
-        SceneManager.LoadScene(GAME_SCENE);
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
     }
 
     public void GoToMenu()
