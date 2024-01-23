@@ -8,6 +8,8 @@ TagManager:
   - TestCube
   - Gate
   - FinishLine
+  - Wall
+  - Obstacle
   layers:
   - Default
   - TransparentFX

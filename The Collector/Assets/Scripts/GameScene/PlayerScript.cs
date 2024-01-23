@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
 
     public event EventHandler OnGameFinished;
 
+    private Rigidbody playerRb;
+
     //--------------Movement---------------
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float moveSpeed;
@@ -29,6 +31,7 @@ public class PlayerScript : MonoBehaviour
     private const string GOLD_TAG_STRING = "Gold";
     private const string GATE_TAG_STRING = "Gate";
     private const string FINISH_LINE_STRING = "FinishLine";
+    private const string OBSTACLE_STRING = "Obstacle";
     private int gateNumber;
     private int targetCount;
 
@@ -37,10 +40,12 @@ public class PlayerScript : MonoBehaviour
     private const string IS_DEATH = "isDeath";
     private const string IS_FINISHED = "isFinished";
 
-    
+  
+
     private void Awake()
     {
         animator = this.gameObject.transform.GetChild(0).GetComponent<Animator>();
+        playerRb = this.gameObject.GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -54,7 +59,21 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag(OBSTACLE_STRING))
+        {
+            SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.punchSoundClip);
+            healthManager.numberOfHearts--;
+
+            if (healthManager.numberOfHearts == 0)
+            {
+                
+                Death();
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(GOLD_TAG_STRING))
@@ -173,6 +192,7 @@ public class PlayerScript : MonoBehaviour
     {
         animator.SetBool(IS_RUNNING, true);
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        
     }
 
 
