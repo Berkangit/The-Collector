@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class Level : MonoBehaviour
         int randomDanceIndex = Random.Range(0, 3);
         animator.SetInteger(DANCE_INDEX, randomDanceIndex);
         animator.SetTrigger(DANCE);
+    }
+
+    public void BackToMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
