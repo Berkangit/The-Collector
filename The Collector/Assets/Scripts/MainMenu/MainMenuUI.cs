@@ -11,8 +11,8 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button levelButton;
     [SerializeField] private Button quitButton;
    
-    private const string gameScene = "GameScene";
-    private const string levelScene = "LevelsScene";
+    private const string gameScene = "FirstScene";
+    private const string levelScene = "LevelScene";
 
     private void Awake()
     {

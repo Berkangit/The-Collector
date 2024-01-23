@@ -31,18 +31,6 @@ public class GameOverManager : MonoBehaviour
         
     }
 
-  /*  private void Update()
-    {
-        if (playerScript.isFinishLineTouched || playerScript.isPlayerDead)
-        {
-            GameOver();
-        }
-        if (playerScript.isFinishLineTouched)
-        {
-           
-        }
-    }*/
-
     public void RestartTheGame()
     {
         SceneManager.LoadScene(GAME_SCENE);
@@ -57,6 +45,10 @@ public class GameOverManager : MonoBehaviour
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+    public void NextButton()
+    {
+        SceneManager.LoadScene("SecondLevelScene");
     }
 
 
