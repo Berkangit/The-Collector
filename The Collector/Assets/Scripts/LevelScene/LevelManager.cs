@@ -11,13 +11,21 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Button firstLevelButton,secondLevelButton,thirdLevelButton,fourthLevelButton;
     private const string DANCE_INDEX = "DanceIndex";
     private const string DANCE = "Dance";
+    private const string HasRunKey = "HasRun";
 
     public static bool firstScene, secondScene, thirdScene,fourthScene;
 
 
     private void Awake()
     {
-       // PlayerPrefs.DeleteAll();
+        if (!PlayerPrefs.HasKey(HasRunKey))
+        {
+         
+            PlayerPrefs.DeleteAll();
+
+            PlayerPrefs.SetInt(HasRunKey, 1);
+            PlayerPrefs.Save();
+        }
     }
     private void Start()
     {
