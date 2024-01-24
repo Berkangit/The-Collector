@@ -24,13 +24,13 @@ public class LevelManager : MonoBehaviour
     }
     private void Update()
     {
-        if(secondScene == true)
+        if (PlayerPrefs.HasKey("SecondSceneUnlocked"))
             secondLevelButton.interactable = true;
-        
-        if (thirdScene == true)
+
+        if (PlayerPrefs.HasKey("ThirdSceneUnlocked"))
             thirdLevelButton.interactable = true;
 
-        if (fourthScene == true)
+        if (PlayerPrefs.HasKey("FourthSceneUnlocked"))
             fourthLevelButton.interactable = true;
     }
     public void BackToMenuButton()
@@ -57,5 +57,13 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("FourthLevelScene");
 
     }
+
+    //public void SaveButtonIterability()
+    //{
+    //    PlayerPrefs.SetInt("SecondSceneUnlocked", secondScene ? 1 : 0);
+    //    PlayerPrefs.SetInt("ThirdSceneUnlocked", thirdScene ? 1 : 0);
+    //    PlayerPrefs.SetInt("FourthSceneUnlocked", fourthScene ? 1 : 0);
+    //    PlayerPrefs.Save();
+    //}
 
 }

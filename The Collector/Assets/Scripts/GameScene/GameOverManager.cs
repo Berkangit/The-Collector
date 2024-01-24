@@ -48,10 +48,10 @@ public class GameOverManager : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
-    public void NextButton()
-    {
-        SceneManager.LoadScene("SecondLevelScene");
-    }
+    //public void NextButton()
+    //{
+    //    SceneManager.LoadScene("SecondLevelScene");
+    //}
 
 
     public void GameOver()
