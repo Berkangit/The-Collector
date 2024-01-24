@@ -2331,7 +2331,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123469}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: RestartTheGame
         m_Mode: 1
@@ -2764,7 +2764,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123469}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: QuitButton
         m_Mode: 1
@@ -3494,7 +3494,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 525800915}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: TapToScreen
         m_Mode: 1
@@ -6297,13 +6297,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58aa51470a0259c409f810228c34ffaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapToStartText: {fileID: 0}
-  handIcon: {fileID: 0}
-  goldCountText: {fileID: 0}
+  tapToStartText: {fileID: 1610932418}
+  handIcon: {fileID: 742522338}
+  goldCountText: {fileID: 584321020}
   playerScript: {fileID: 1419598372}
   playerTransform: {fileID: 1419598371}
   finishLineTransform: {fileID: 1649514878}
-  slider: {fileID: 0}
+  slider: {fileID: 909891411}
   newGoldCountTransform: {x: 1.4, y: 1.4, z: 1.4}
 --- !u!114 &996123468
 MonoBehaviour:
@@ -6317,13 +6317,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2d4b866c21ab241acf7e7fdc4cc5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseButton: {fileID: 0}
-  resumeButton: {fileID: 0}
-  menuButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  soundButton: {fileID: 0}
-  soundEffectsText: {fileID: 0}
-  pauseMenuUI: {fileID: 0}
+  pauseButton: {fileID: 1985551956}
+  resumeButton: {fileID: 1209508037}
+  menuButton: {fileID: 1526112319}
+  quitButton: {fileID: 1741185178}
+  soundButton: {fileID: 1984171452}
+  soundEffectsText: {fileID: 518735410}
+  pauseMenuUI: {fileID: 1130320203}
 --- !u!114 &996123469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6336,10 +6336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4c90d2b28c17643919cb3658ece504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartButton: {fileID: 0}
-  menuButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  goldAmountText: {fileID: 0}
+  restartButton: {fileID: 422789702}
+  menuButton: {fileID: 1909763162}
+  quitButton: {fileID: 483795979}
+  goldAmountText: {fileID: 1448861}
   playerScript: {fileID: 1419598372}
 --- !u!95 &996123470
 Animator:
@@ -8664,9 +8664,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfHearts: 3
   hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 693422500}
+  - {fileID: 830506011}
+  - {fileID: 516796588}
   fullHeart: {fileID: 21300000, guid: 306abe1ac2afd1740aa0eee50851f71a, type: 3}
 --- !u!1001 &1433294042
 PrefabInstance:
@@ -9376,7 +9376,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123468}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: BackToTheMenu
         m_Mode: 1
@@ -9961,7 +9961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1615522966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10760,7 +10760,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123468}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: QuitTheGame
         m_Mode: 1
@@ -10813,7 +10813,7 @@ RectTransform:
   m_Father: {fileID: 2105421626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11573,7 +11573,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123469}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: GoToMenu
         m_Mode: 1
@@ -12221,9 +12221,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1410499811}
         m_TargetAssemblyTypeName: LevelFinished, Assembly-CSharp
-        m_MethodName: FirstLevelFinished
+        m_MethodName: FourthLevelFinished
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

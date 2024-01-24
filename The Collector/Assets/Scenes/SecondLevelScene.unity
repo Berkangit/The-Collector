@@ -916,7 +916,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123469}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: RestartTheGame
         m_Mode: 1
@@ -2325,7 +2325,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123468}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: BackToTheMenu
         m_Mode: 1
@@ -2882,7 +2882,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123468}
         m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
         m_MethodName: QuitTheGame
         m_Mode: 1
@@ -3873,7 +3873,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 525800915}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: TapToScreen
         m_Mode: 1
@@ -4006,9 +4006,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 964919213}
         m_TargetAssemblyTypeName: LevelFinished, Assembly-CSharp
-        m_MethodName: FirstLevelFinished
+        m_MethodName: SecondLevelFinished
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5021,13 +5021,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58aa51470a0259c409f810228c34ffaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapToStartText: {fileID: 0}
-  handIcon: {fileID: 0}
-  goldCountText: {fileID: 0}
+  tapToStartText: {fileID: 1407225290}
+  handIcon: {fileID: 495072894}
+  goldCountText: {fileID: 832535779}
   playerScript: {fileID: 1419598372}
   playerTransform: {fileID: 1419598371}
   finishLineTransform: {fileID: 1649514878}
-  slider: {fileID: 0}
+  slider: {fileID: 1343105910}
   newGoldCountTransform: {x: 1.4, y: 1.4, z: 1.4}
 --- !u!114 &996123468
 MonoBehaviour:
@@ -5041,13 +5041,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2d4b866c21ab241acf7e7fdc4cc5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseButton: {fileID: 0}
-  resumeButton: {fileID: 0}
-  menuButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  soundButton: {fileID: 0}
-  soundEffectsText: {fileID: 0}
-  pauseMenuUI: {fileID: 0}
+  pauseButton: {fileID: 1149458841}
+  resumeButton: {fileID: 474804042}
+  menuButton: {fileID: 445197082}
+  quitButton: {fileID: 483356648}
+  soundButton: {fileID: 363288775}
+  soundEffectsText: {fileID: 322392746}
+  pauseMenuUI: {fileID: 385944051}
 --- !u!114 &996123469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5060,10 +5060,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4c90d2b28c17643919cb3658ece504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartButton: {fileID: 0}
-  menuButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  goldAmountText: {fileID: 0}
+  restartButton: {fileID: 190413466}
+  menuButton: {fileID: 1974939269}
+  quitButton: {fileID: 1466563554}
+  goldAmountText: {fileID: 1174891001}
   playerScript: {fileID: 1419598372}
 --- !u!95 &996123470
 Animator:
@@ -6320,9 +6320,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfHearts: 3
   hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 71126705}
+  - {fileID: 1621196598}
+  - {fileID: 468488882}
   fullHeart: {fileID: 21300000, guid: 306abe1ac2afd1740aa0eee50851f71a, type: 3}
 --- !u!1 &1461603163
 GameObject:
@@ -6562,7 +6562,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123469}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: QuitButton
         m_Mode: 1
@@ -7676,7 +7676,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996123469}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
         m_MethodName: GoToMenu
         m_Mode: 1
