@@ -15,6 +15,10 @@ public class LevelManager : MonoBehaviour
     public static bool firstScene, secondScene, thirdScene,fourthScene;
 
 
+    private void Awake()
+    {
+       // PlayerPrefs.DeleteAll();
+    }
     private void Start()
     {
         firstScene = true;
@@ -24,14 +28,18 @@ public class LevelManager : MonoBehaviour
     }
     private void Update()
     {
-        if (PlayerPrefs.HasKey("SecondSceneUnlocked"))
+        if (PlayerPrefs.GetInt("SecondSceneUnlocked") == 1)
             secondLevelButton.interactable = true;
+        
 
-        if (PlayerPrefs.HasKey("ThirdSceneUnlocked"))
+        if (PlayerPrefs.GetInt("ThirdSceneUnlocked") == 1)
             thirdLevelButton.interactable = true;
+ 
 
-        if (PlayerPrefs.HasKey("FourthSceneUnlocked"))
+        if (PlayerPrefs.GetInt("FourthSceneUnlocked") == 1)
             fourthLevelButton.interactable = true;
+        
+           
     }
     public void BackToMenuButton()
     {
