@@ -22,6 +22,7 @@ Hem iOS hem de Android mobil kullanıcıları, bu eğlenceli macerada yer alabil
 <img src="https://github.com/Berkangit/The-Collector/assets/77855407/27af0377-5931-42ee-af58-c85e620adcb5" alt="5" width=251>
 <img src="https://github.com/Berkangit/The-Collector/assets/77855407/404da5ff-94c3-4956-867d-37feeb34c8bc" alt="6" width=249>
 
-
+## The Collector - Masaüstü Versiyonu
+ The Collector'u masaüstünüzde denemek için [buradan](https://github.com/Berkangit/The-Collector/tree/main/The-Collector%20for%20Desktop) erişebilirsiniz.
 
 
