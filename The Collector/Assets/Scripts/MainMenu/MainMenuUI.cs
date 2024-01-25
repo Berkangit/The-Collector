@@ -20,12 +20,11 @@ public class MainMenuUI : MonoBehaviour
         {
             SceneManager.LoadScene(gameScene);
             Time.timeScale = 1f;
-            //GameManager.gameManagerInstance.gameState = true;
         });
 
         levelButton.onClick.AddListener(() => 
         {
-            Debug.Log("Level Button");
+            
             SceneManager.LoadScene(levelScene);
 
         });
@@ -33,7 +32,7 @@ public class MainMenuUI : MonoBehaviour
         quitButton.onClick.AddListener(() =>
         {
             Application.Quit();
-            Debug.Log("Quit");
+            
         });
     }
 

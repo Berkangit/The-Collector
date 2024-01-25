@@ -33,7 +33,6 @@ public class GameOverManager : MonoBehaviour
     {
         if (playerScript.isFinishLineTouched)
         {
-            Debug.Log("Listedeki gold sayýsý sayýsý" + playerScript.goldBarList.Count);
             goldAmountText.text = PlayerPrefs.GetInt("HighGold").ToString();
         }
         GameOver();
@@ -53,14 +52,8 @@ public class GameOverManager : MonoBehaviour
 
     public void QuitButton()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
-    //public void NextButton()
-    //{
-    //    SceneManager.LoadScene("SecondLevelScene");
-    //}
-
 
     public void GameOver()
     {

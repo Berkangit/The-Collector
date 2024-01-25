@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MovableObs : MonoBehaviour
 {
-	public float distance = 5f; //Distance that moves the object
-	public bool horizontal = true; //If the movement is horizontal or vertical
+	public float distance = 5f;
+	public bool horizontal = true;
 	public float speed = 3f;
-	public float offset = 0f; //If yo want to modify the position at the start 
+	public float offset = 0f;
 
-	private bool isForward = true; //If the movement is out
+	private bool isForward = true;
 	private Vector3 startPos;
    
     void Awake()
@@ -21,7 +21,6 @@ public class MovableObs : MonoBehaviour
 			transform.position += Vector3.forward * offset;
 	}
 
-    // Update is called once per frame
     void Update()
     {
 		if (horizontal)

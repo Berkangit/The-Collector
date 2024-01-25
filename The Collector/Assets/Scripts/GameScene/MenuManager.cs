@@ -77,9 +77,6 @@ public class MenuManager : MonoBehaviour
     {
         goldCountText.transform.DOScale(newGoldCountTransform, 0.3f)
           .OnComplete(() => OnScaleComplete());
-           //nsform.DOMove(randomStartPosition, speed)
-           //.OnComplete(() => OnMoveComplete());
-
 
         goldCountText.text = playerScript.goldBarList.Count.ToString();
     }
