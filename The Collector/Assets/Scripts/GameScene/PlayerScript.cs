@@ -161,6 +161,7 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("Game is finished");
             Time.timeScale = 0f;
             isFinishLineTouched = true;
+            GameOverManager.Instance.nextButton.gameObject.SetActive(true);
             animator.SetBool(IS_FINISHED, true);
             GameManager.gameManagerInstance.gameState = false;
             if (goldBarList.Count > PlayerPrefs.GetInt("HighGold")) 
@@ -242,6 +243,7 @@ public class PlayerScript : MonoBehaviour
     private void Death()
     {
         Debug.Log("You are dead");
+        GameOverManager.Instance.nextButton.gameObject.SetActive(false);
         SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.deathSoundClip);
         OnGameFinished?.Invoke(this, EventArgs.Empty);
         animator.SetBool(IS_DEATH, true);

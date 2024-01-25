@@ -8,13 +8,21 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private Button menuButton;
     [SerializeField] private Button quitButton;
+
     [SerializeField] private TMP_Text goldAmountText;
     [SerializeField] private PlayerScript playerScript;
+    public Button nextButton;
+
+
+    public static GameOverManager Instance { get; private set; }
 
     
     private const string MENU_SCENE = "MainMenu";
 
-    
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {

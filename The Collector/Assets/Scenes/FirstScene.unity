@@ -3976,6 +3976,7 @@ MonoBehaviour:
   quitButton: {fileID: 1349801180}
   goldAmountText: {fileID: 2027143877}
   playerScript: {fileID: 1419598372}
+  nextButton: {fileID: 744307016}
 --- !u!1001 &996152637
 PrefabInstance:
   m_ObjectHideFlags: 0

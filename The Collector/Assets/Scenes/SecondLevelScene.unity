@@ -5065,6 +5065,7 @@ MonoBehaviour:
   quitButton: {fileID: 1466563554}
   goldAmountText: {fileID: 1174891001}
   playerScript: {fileID: 1419598372}
+  nextButton: {fileID: 671690903}
 --- !u!95 &996123470
 Animator:
   serializedVersion: 5
