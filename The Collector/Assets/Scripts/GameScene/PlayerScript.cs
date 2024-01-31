@@ -8,8 +8,6 @@ public class PlayerScript : MonoBehaviour
 
     public event EventHandler OnGameFinished;
 
-  
-    //--------------Movement---------------
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float horizontalLimit;
@@ -122,17 +120,12 @@ public class PlayerScript : MonoBehaviour
 
                 if (goldBarList.Count >= Mathf.Abs(gateNumber))
                 {
-                    Debug.Log("Decrease gold called");
-
-                    Debug.Log("target count :" + targetCount);
-                    Debug.Log("target count :" + goldBarList.Count);
                     SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.coinDropSoundClip);
                     DecreaseGold();
                 }
 
                 else
                 {
-                    Debug.Log("Eldeki kurtarmadý");
                     SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.punchSoundClip);
                     if (healthManager.numberOfHearts > 0)
                     {
@@ -158,7 +151,6 @@ public class PlayerScript : MonoBehaviour
 
         if(other.gameObject.CompareTag(FINISH_LINE_STRING))
         {
-            Debug.Log("Game is finished");
             Time.timeScale = 0f;
             isFinishLineTouched = true;
             GameOverManager.Instance.nextButton.gameObject.SetActive(true);
@@ -214,7 +206,7 @@ public class PlayerScript : MonoBehaviour
 
     private void DecreaseGold()
     {
-        Debug.Log("Before gold decreased " + goldBarListIndexCounter);
+        
             for (int i = goldBarList.Count - 1; i >= targetCount; i--)
             {
                 GameObject goldToRemove = goldBarList[i];
@@ -226,7 +218,7 @@ public class PlayerScript : MonoBehaviour
         if (goldBarListIndexCounter < 0)
             goldBarListIndexCounter = 0;
 
-        Debug.Log("After gold decreased " + goldBarListIndexCounter);
+        
 
 
 
@@ -242,7 +234,6 @@ public class PlayerScript : MonoBehaviour
 
     private void Death()
     {
-        Debug.Log("You are dead");
         GameOverManager.Instance.nextButton.gameObject.SetActive(false);
         SoundManager.instance.auidioSource.PlayOneShot(SoundManager.instance.deathSoundClip);
         OnGameFinished?.Invoke(this, EventArgs.Empty);

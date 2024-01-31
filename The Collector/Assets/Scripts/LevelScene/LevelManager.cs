@@ -74,12 +74,5 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    //public void SaveButtonIterability()
-    //{
-    //    PlayerPrefs.SetInt("SecondSceneUnlocked", secondScene ? 1 : 0);
-    //    PlayerPrefs.SetInt("ThirdSceneUnlocked", thirdScene ? 1 : 0);
-    //    PlayerPrefs.SetInt("FourthSceneUnlocked", fourthScene ? 1 : 0);
-    //    PlayerPrefs.Save();
-    //}
 
 }

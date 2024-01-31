@@ -44,7 +44,6 @@ public class SoundManager : MonoBehaviour
         auidioSource.volume = volume;
         PlayerPrefs.SetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, volume);
         PlayerPrefs.Save();
-        Debug.Log("Volume deðiþtirildi" + volume);
     }
 
 

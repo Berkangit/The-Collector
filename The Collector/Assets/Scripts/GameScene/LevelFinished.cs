@@ -8,7 +8,6 @@ public class LevelFinished : MonoBehaviour
     public void FirstLevelFinished()
     {
         LevelManager.secondScene = true;
-        Debug.Log(LevelManager.secondScene);
         PlayerPrefs.SetInt("SecondSceneUnlocked",1);
         PlayerPrefs.Save();
         SceneManager.LoadScene("LevelScene");
